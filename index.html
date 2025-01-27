@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Theme Variables */
+        :root {
+            --background-color: #000000;
+            --text-color: white;
+            --accent-color: #0076B6;
+            --transition-speed: 0.3s;
+            --border-radius: 8px;
+        }
+
+        /* Theme Variations */
+        [data-theme="light"] {
+            --background-color: white;
+            --text-color: #000000;
+            --accent-color: #0076B6;
+        }
+
+        /* Base theme transition */
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color var(--transition-speed) ease;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+
+        /* Keep text color constant */
+        .main-text,
+        .sub-text,
+        .chinese-text {
+            color: #0076B6;
+        }
+
+        .content-group {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            padding-left: 4rem;
+        }
+
+        .pixel-art {
+            height: 75vh;
+            opacity: 0.8;
+            position: absolute;
+            left: 15%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            filter: brightness(0) saturate(100%) invert(40%) sepia(96%) saturate(1073%) hue-rotate(177deg) brightness(92%) contrast(101%);
+        }
+
+        .content-box {
+            margin-left: 25%;
+            position: relative;
+            z-index: 1;
+            width: 60vw;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: transparent;
+            border: none;
+        }
+
+        .background-text {
+            position: fixed;
+            color: rgba(128, 128, 128, 0.1);
+            font-size: clamp(4rem, 10vw, 8rem);
+            z-index: -1;
+            user-select: none;
+        }
+
+        .bio-content {
+            padding: 2rem;
+            max-width: 80%;
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+
+        .bio-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .bio-link {
+            color: #0076B6;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: opacity 0.2s ease;
+        }
+
+        .bio-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Update content-box styles */
+        .content-box {
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        /* Custom scrollbar */
+        .content-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content-box::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .content-box::-webkit-scrollbar-thumb {
+            background: #0076B6;
+            border-radius: 4px;
+        }
+
+        .sections-container {
+            display: flex;
+            flex-direction: row;
+            gap: 7rem;
+            padding: 1rem 1rem;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .section {
+            flex: 1;
+            max-width: 28%;
+        }
+
+        .section-title {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            color: var(--text-color);
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .item:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .item-link {
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .item-title {
+            color: #0076B6;
+            font-weight: 600;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+
+        .separator {
+            color: var(--text-color);
+            opacity: 0.5;
+        }
+
+        .item-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Remove scrollbar styles since we won't need them */
+        .content-box::-webkit-scrollbar {
+            display: none;
+        }
+
+        .email {
+            margin-left: 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+            opacity: 1;
+        }
+
+        .email:hover {
+            opacity: 0.7;
+        }
+
+        /* Update location-time styles */
+        #location-time {
+            display: flex;
+            align-items: center;
+        }
+
+        #time, #location {
+            opacity: 0.7;
+        }
+
+        /* Make hover effects consistent */
+        .item-link:hover .item-description,
+        .footer-link:hover,
+        .email:hover,
+        .bio-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Remove hover effect from non-link items */
+        .item:not(.item-link):hover {
+            background-color: transparent;
+            cursor: default;
+        }
+
+        /* Update styles for external link indicator */
+        .item-link .item::after {
+            content: '↗';
+            opacity: 0;
+            margin-left: 0.3rem;
+            transition: opacity 0.2s ease;
+            color: var(--text-color);
+            font-size: 0.8rem;
+            transform: scale(0.7);
+        }
+
+        .item-link:hover .item::after {
+            opacity: 0.7;
+        }
+
+        .time {
+            color: var(--text-color) !important;
+            opacity: 1;
+            margin-left: 0.5rem;
+        }
+
+        /* Theme toggle button hover effect */
+        .theme-toggle {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.8;
+        }
+
+        /* Curved images for theme icons */
+        #theme-icon {
+            border-radius: 15%;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Header Elements -->
+    <div class="header-elements">
+        <div class="logo-container">
+            <img src="assets/my-logo-light.png" alt="My Logo" class="logo" id="theme-logo">
+            <div id="location-time">
+                Ann Arbor, MI <span id="time" class="time">01:43:50 PM</span>
+                <a href="mailto:anishn@umich.edu" class="email">anishn@umich.edu</a>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="https://www.instagram.com/anishn0/" class="footer-link" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/anandamuri" class="footer-link" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/anishnandamuri/" class="footer-link" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="assets/resume.pdf" class="footer-link" target="_blank" aria-label="Resume">
+                <i class="far fa-file-alt"></i>
+            </a>
+            <button class="theme-toggle" id="theme-toggle">
+                <img src="assets/moon-icon.png" alt="Toggle Theme" id="theme-icon">
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-group">
+        <img src="assets/lion.png" alt="Pixel Art" class="pixel-art">
+        <div class="content-box">
+            <div class="sections-container">
+                <!-- Past Section -->
+                <div class="section">
+                    <h2 class="section-title">past</h2>
+                    <div class="section-items">
+                        <div class="item">
+                            <span class="item-title">wsu</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">Computer Vision Research Assistant, autonomous UAV development.</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">CS Club</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">President, taught web dev & AI/ML to Metro Detroit students.</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">wsu</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">Research on ML packages using R & Python, analyzing 100k+ data points.</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">CYAC</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">Vice President, led youth initiatives and data visualization projects.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Section -->
+                <div class="section">
+                    <h2 class="section-title">current</h2>
+                    <div class="section-items">
+                        <div class="item">
+                            <span class="item-title">UMichigan</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">Computer science engineering & business administration.</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">Stealth</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">Building something fun for accountability.</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">MDST</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">Project based learning for machine learning and AI applications.</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">MRover</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">Developing autonomous systems for Mars rover competition.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Books Section -->
+                <div class="section">
+                    <h2 class="section-title">Books</h2>
+                    <div class="section-items">
+                        <div class="item">
+                            <span class="item-title">1984</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">A dystopian novel by George Orwell about totalitarianism.</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">To Kill a Mockingbird</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">A novel about racial injustice in the Deep South.</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">The Great Gatsby</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">A story of wealth, love, and the American Dream.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movies Section -->
+                <div class="section">
+                    <h2 class="section-title">Movies</h2>
+                    <div class="section-items">
+                        <div class="item">
+                            <span class="item-title">Inception</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">A mind-bending thriller about dreams within dreams.</span>
+                            <span class="item-director">Director: Christopher Nolan</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">The Matrix</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">A hacker discovers the true nature of reality.</span>
+                            <span class="item-director">Director: Lana and Lilly Wachowski</span>
+                        </div>
+                        <div class="item">
+                            <span class="item-title">Interstellar</span>
+                            <span class="separator">/</span>
+                            <span class="item-description">A journey through space and time to save humanity.</span>
+                            <span class="item-director">Director: Christopher Nolan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

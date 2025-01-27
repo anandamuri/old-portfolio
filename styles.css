@@ -1,0 +1,381 @@
+/* Global Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Root Variables & Theme Settings */
+:root {
+    --spacing-small: 0.625rem;
+    --spacing-medium: 1.25rem;
+    --spacing-large: 2.5rem;
+    --z-index-background: -1;
+    --z-index-content: 1;
+    --z-index-overlay: 10;
+    --border-radius: 0.5rem;
+    overflow-x: hidden; /* Prevent horizontal scroll at root */
+}
+
+
+
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    height: 100vh;
+    width: 100vw; /* Explicit viewport width */
+    overflow: hidden;
+    text-transform: lowercase;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-image: url('assets/black-background.png'), url('assets/light-background.png');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background images */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Header Elements */
+.header-elements {
+    position: fixed;
+    width: 100%;
+    padding: 1rem 2rem; /* Reduce padding */
+    display: flex;
+    justify-content: space-between; /* Adjust to space items */
+    align-items: center;
+    z-index: var(--z-index-overlay);
+    left: 0;
+    top: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.logo {
+    width: 35px; /* Adjust the size of your logo to be smaller */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 50px; /* Add a small space between logo and location text */
+}
+
+#location-time {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    padding: 0.5rem 0;
+}
+
+/* Language Switcher Styles */
+#language-switcher {
+    margin-left: 1rem;
+}
+
+#language-dropdown {
+    background: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#language-dropdown:focus {
+    outline: none;
+    border-color: var(--text-color);
+}
+
+#language-dropdown:hover {
+    opacity: 0.8;
+}
+
+/* Base styles for the theme toggle button */
+.theme-toggle {
+    position: static;
+    padding: 0;
+    width: 1.98rem;
+    height: 1.98rem;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease; /* Keep the opacity transition */
+    border-radius: var(--border-radius); /* Use the variable for border radius */
+}
+
+/* Hover effects for both light and dark modes */
+.theme-toggle:hover {
+    opacity: 0.8; /* Change opacity on hover */
+}
+
+.theme-toggle img {
+    width: 120%; /* Increase size */
+    height: 120%; /* Increase size */
+    border: none;
+    background: none;
+    box-shadow: none;
+    transition: filter 0.3s ease; /* Smooth transition for filter */
+}
+
+/* Target only the sun icon */
+.theme-toggle img.sun-icon {
+    width: 140%; /* Scale the sun icon more */
+    height: 140%;
+}
+
+/* Hover effect for images */
+.theme-toggle:hover img {
+    filter: brightness(0.8); /* Darken the image slightly */
+    opacity: 0.9; /* Optional: Adjust opacity for a more subtle effect */
+}
+
+/* Light mode styles */
+[data-theme="light"] .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Light mode hover effect */
+}
+
+/* Dark mode styles */
+[data-theme="dark"] .theme-toggle:hover {
+    background-color: rgba(100, 100, 100, 0.5); /* Dark mode hover effect */
+}
+
+/* Grid Container */
+.grid-container {
+    width: 100%;
+    max-width: 100vw;
+    height: 70vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vh 4vw;
+    padding: 2vh 4vw;
+    margin: 0 auto;
+    place-items: center;
+    position: relative;
+    top: 45%;
+    transform: translateY(-50%);
+    overflow: hidden; /* Prevent grid overflow */
+}
+
+/* Grid Items */
+.grid-item {
+    width: 100%;
+    padding: 1vh 2vw;
+}
+
+.grid-item-title {
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    padding: 1vh;
+}
+
+/* Typography */
+h1 {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0;
+    padding-top: 5vh;
+    position: fixed;
+    width: 100%;
+    top: 15vh;
+    left: 0; /* Ensure centering */
+}
+
+/* Header Right Section */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-right: 2rem;
+    position: fixed;
+    right: 0;
+    top: 1.5rem;
+    z-index: var(--z-index-overlay);
+}
+
+/* Social Links */
+.social-links .footer-link {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+/* Link Styles */
+a, a:visited, a:hover, a:active {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.grid-item, 
+.grid-item:visited,
+.footer-link,
+.footer-link:visited {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+/* Social Links and Icons */
+.footer-link i {
+    font-size: 1.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.language-button {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.language-button:hover {
+    opacity: 0.7;
+}
+
+.footer-link, .theme-toggle, .language-button {
+    width: 1.98rem;
+    height: 1.98rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-box {
+    margin-left: 20%;
+    position: relative;
+    z-index: 1;
+    width: 92vw; /* Increased width for a wider box */
+    height: auto; /* Allow height to adjust based on content */
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
+    overflow: visible; /* Remove overflow to prevent scrolling */
+    background: rgba(0, 0, 0, 0.7); /* Darkened background for better text clarity */
+    padding: 1rem; /* Add padding for readability */
+}
+
+.sections-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 1.75rem; /* Reduced padding between columns */
+    width: 100%;
+    align-items: start; /* Align items to the top */
+    margin: 0; /* Remove margin to ensure full width usage */
+}
+
+.section {
+    margin-bottom: 2rem; /* Add space between sections */
+    max-width: 100%; /* Ensure full width usage */
+    padding: 0; /* Remove padding */
+    background-color: transparent; /* Ensure no background color conflicts */
+}
+
+.section-items {
+    display: flex;
+    flex-direction: column; /* Ensure items stack vertically */
+    gap: 3rem; /* Adjust this value to change the separation between items */
+}
+
+.item-link {
+    position: relative; /* Position relative for the arrow */
+    text-decoration: none; /* Remove default underline */
+}
+
+.item-link::after {
+    content: '';
+    position: absolute;
+    right: -10px; /* Position the arrow to the right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center the arrow */
+    width: 0; /* No width */
+    height: 0; /* No height */
+    border-left: 5px solid var(--text-color); /* Arrow color */
+    border-top: 5px solid transparent; /* Top triangle */
+    border-bottom: 5px solid transparent; /* Bottom triangle */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.2s ease; /* Smooth transition */
+}
+
+.item-link:hover::after {
+    opacity: 1; /* Show arrow on hover */
+}
+
+.theme-toggle:hover ~ body,
+.theme-toggle:hover ~ .content-group {
+    background-color: rgba(255, 255, 255, 0.2); /* Whitish tint effect */
+}
+
+.content-group {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding-left: 4rem;
+    z-index: 1; /* Ensure content is above the background */
+}
+
+/* Update section titles to bright blue */
+.section-title {
+    color: #00A8F3; /* Bright blue for section titles */
+    margin-top: 2rem; /* Space above titles */
+}
+
+/* Update item titles to bright white */
+.item-title {
+    color: #FFFFFF; /* Bright white color for readability */
+}
+
+/* Update item descriptions to light gray */
+.item-description {
+    color: rgba(255, 255, 255, 0.9); /* Light gray for better contrast */
+}
+
+/* Dark mode background */
+[data-theme="dark"] {
+    background-image: url('assets/black-background.png');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+}
+
+/* Light mode background */
+[data-theme="light"] {
+    background-image: url('assets/light-background.png');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    --text-color: #000000; /* Ensure dark text on light background */
+}
+
+.item-director {
+    display: block; /* Make it a block element */
+    color: rgba(255, 255, 255, 0.8); /* Light gray for better contrast */
+    margin-top: 0.5rem; /* Add some space above */
+}
+
+.item {
+    margin-bottom: 1rem; /* Space between items */
+}
+
+.header-right a {
+    margin-right: 1rem; /* Add space between icons */
+}
