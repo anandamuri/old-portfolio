@@ -34,6 +34,16 @@ header {
     margin-left: auto;
 }
 
+/* Updated font sizes */
+.header-left span, 
+#email {
+    font-size: 15px;
+}
+
+#clock {
+    font-size: 16px;
+}
+
 /* Styling for header buttons (Resume, LinkedIn, GitHub) */
 .header-button {
     display: flex;
@@ -42,7 +52,7 @@ header {
     background-color: transparent;
     text-decoration: none;
     padding: 5px;
-    font-size: 20px; /* Adjust icon size */
+    font-size: 20px;
     color: white;
     transition: opacity 0.3s ease, transform 0.2s ease;
 }
@@ -54,7 +64,7 @@ header {
 
 /* Ensure Font Awesome icons fit within buttons */
 .header-button i {
-    font-size: 22px; /* Icon size */
+    font-size: 22px;
 }
 
 /* Theme toggle button */
@@ -74,16 +84,31 @@ header {
     height: auto;
 }
 
+.small-time {
+    font-size: 14px;
+}
+
+
 /* Main content layout */
 main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 section {
+    flex-grow: 1;
+    min-width: 320px;
     color: white;
+}
+
+/* Adjust movies column to reach the theme toggle */
+section:last-child {
+    flex-grow: 1.2;
+    margin-right: 60px;
 }
 
 /* List styling with custom icons */
@@ -93,4 +118,32 @@ ul li {
     background: url('assets/2.png') no-repeat left center;
     background-size: 15px;
     padding-left: 20px;
+}
+
+.movies-container {
+    position: relative;
+    display: inline-block;
+}
+
+#movies-popup {
+    display: none;
+    position: absolute;
+    top: -50px; /* Adjust for proper placement */
+    left: 110%; /* Push it to the right */
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+    background-color: transparent; /* Remove unnecessary background */
+}
+
+#movies-popup img {
+    width: 100%;
+    height: auto;
+}
+
+#movies-hover {
+    cursor: pointer;
+}
+
+.movies-container:hover #movies-popup {
+    display: block;
 }
