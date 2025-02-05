@@ -88,12 +88,12 @@ header {
     font-size: 14px;
 }
 
-
 /* Main content layout */
 main {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 150px; /* Adjust this value to increase spacing */
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -120,30 +120,44 @@ ul li {
     padding-left: 20px;
 }
 
-.movies-container {
+.movies-container, .projects-container, .umich-container {
     position: relative;
-    display: inline-block;
+    display: flex; /* Match other list items */
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 0; /* Remove any unwanted padding */
+    margin: 0; /* Remove any unwanted margin */
+    width: 100%; /* Ensures it doesn't shrink */
 }
 
-#movies-popup {
+#movies-popup, #projects-popup {
     display: none;
     position: absolute;
-    top: -50px; /* Adjust for proper placement */
-    left: 110%; /* Push it to the right */
-    width: 50px; /* Adjust size as needed */
+    top: -1px; /* Adjust for proper placement */
+    left: 50%; /* Moves it closer to the text */
+    width: 40px; /* Adjust size as needed */
     height: auto;
-    background-color: transparent; /* Remove unnecessary background */
+    background-color: transparent;
 }
 
-#movies-popup img {
-    width: 100%;
+#umich-popup {
+    display: none;
+    position: absolute;
+    top: -1px; /* Adjust for proper placement */
+    left: 120%; /* Moves it closer to the text */
+    width: 40px; /* Adjust size as needed */
     height: auto;
+    background-color: transparent;
 }
 
-#movies-hover {
-    cursor: pointer;
+#movies-popup img, #projects-popup img, #umich-popup img {
+    width: 20px; /* Adjust the width to make it smaller */
+    height: auto; /* Maintains aspect ratio */
 }
 
-.movies-container:hover #movies-popup {
+.movies-container:hover #movies-popup,
+.projects-container:hover #projects-popup,
+.umich-container:hover #umich-popup {
     display: block;
 }

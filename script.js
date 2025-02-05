@@ -6,17 +6,3 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
-
-document.addEventListener("DOMContentLoaded", function () {
-  const moviesContainer = document.querySelector(".movies-container");
-  const moviesPopup = document.getElementById("movies-popup");
-
-  moviesContainer.addEventListener("mouseenter", function () {
-      moviesPopup.style.display = "block";
-  });
-
-  moviesContainer.addEventListener("mouseleave", function () {
-      moviesPopup.style.display = "none";
-  });
-});
-
