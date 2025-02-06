@@ -32,8 +32,17 @@ header {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center; /* Ensures even spacing */
+    gap: 0px; /* Adjusts spacing between icons */
     margin-left: auto;
+}
+
+.header-button, #theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Ensure all icons have equal width */
+    height: 40px;
 }
 
 .header-left span, 
@@ -125,7 +134,7 @@ ul li {
     background-size: 15px;
 }
 
-.movies-container, .projects-container, .umich-container {
+.movies-container, .umich-container {
     position: relative;
     display: flex;
     align-items: center;
@@ -136,7 +145,7 @@ ul li {
     width: 100%;
 }
 
-#movies-popup, #projects-popup, #umich-popup {
+#movies-popup, #umich-popup {
     display: none;
     position: absolute;
     top: -1px;
@@ -146,19 +155,17 @@ ul li {
     background-color: transparent;
 }
 
-#movies-popup img, #projects-popup img, #umich-popup img {
+#movies-popup img, #umich-popup img {
     width: 20px;
     height: auto;
 }
 
 .movies-container:hover #movies-popup,
-.projects-container:hover #projects-popup,
 .umich-container:hover #umich-popup {
     display: block;
 }
 
 .movies-container:hover strong,
-.projects-container:hover strong,
 .umich-container:hover strong,
 ul li:hover strong {
     color: #999999;
@@ -238,13 +245,11 @@ ul li:hover strong {
 }
 
 .light-mode #movies-popup img,
-.light-mode #projects-popup img,
 .light-mode #umich-popup img {
     content: url('assets/arrow-light.png');
 }
 
 .dark-mode #movies-popup img,
-.dark-mode #projects-popup img,
 .dark-mode #umich-popup img {
     content: url('assets/arrow-dark.png');
 }
