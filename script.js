@@ -34,3 +34,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const savedTheme = localStorage.getItem("theme") || "dark";
   setTheme(savedTheme);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // University of Michigan button redirect
+  const umichButton = document.getElementById("umich-hover");
+  if (umichButton) {
+      umichButton.addEventListener("click", function () {
+          window.location.href = "classes.html";
+      });
+  }
+
+  // Movies button redirect
+  const moviesButton = document.getElementById("movies-hover");
+  if (moviesButton) {
+      moviesButton.addEventListener("click", function () {
+          window.location.href = "movies.html";
+      });
+  }
+});

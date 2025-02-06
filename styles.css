@@ -115,9 +115,14 @@ section:last-child {
 ul li {
     margin-bottom: 20px;
     list-style: none;
-    background: url('assets/2.png') no-repeat left center;
+    background: url('assets/bullet-dark.png') no-repeat left center;
     background-size: 15px;
     padding-left: 20px;
+}
+
+.light-mode ul li {
+    background: url('assets/bullet-light.png') no-repeat left center;
+    background-size: 15px;
 }
 
 .movies-container, .projects-container, .umich-container {
@@ -238,4 +243,17 @@ ul li:hover strong {
 .dark-mode #projects-popup img,
 .dark-mode #umich-popup img {
     content: url('assets/arrow-dark.png');
+}
+
+.back-arrow {
+    display: inline-block;
+    font-size: 20px; /* Increase arrow size */
+    color: white; /* Make it white */
+    text-decoration: none;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.back-arrow:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
 }
