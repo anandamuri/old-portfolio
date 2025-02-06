@@ -85,6 +85,7 @@ header {
     width: 26px;
     height: 26px;
     transition: opacity 0.3s ease, transform 0.2s ease;
+    border-radius: 5px; /* Adds curved edges */
 }
 
 #theme-toggle:hover img {
