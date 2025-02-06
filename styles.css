@@ -168,6 +168,10 @@ ul li:hover strong {
     color: #999999;
 }
 
+.light-mode .lighter-text {
+    color: rgb(46, 46, 46); /* Dark black arrow for light mode */
+}
+
 #email {
     color: white;
     text-decoration: none;
@@ -247,13 +251,18 @@ ul li:hover strong {
 
 .back-arrow {
     display: inline-block;
-    font-size: 20px; /* Increase arrow size */
-    color: white; /* Make it white */
+    font-size: 20px; /* Ensure the arrow is 40px */
+    color: white; /* Default white in dark mode */
     text-decoration: none;
-    transition: opacity 0.3s ease, transform 0.2s ease;
+    transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
 .back-arrow:hover {
     opacity: 0.7;
     transform: scale(1.1);
+}
+
+/* Change arrow color to black in light mode */
+.light-mode .back-arrow {
+    color: black; /* Dark black arrow for light mode */
 }
