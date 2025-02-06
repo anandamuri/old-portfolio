@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #161616;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -34,7 +36,6 @@ header {
     margin-left: auto;
 }
 
-/* Updated font sizes */
 .header-left span, 
 #email {
     font-size: 15px;
@@ -44,7 +45,6 @@ header {
     font-size: 16px;
 }
 
-/* Styling for header buttons (Resume, LinkedIn, GitHub) */
 .header-button {
     display: flex;
     align-items: center;
@@ -54,7 +54,7 @@ header {
     padding: 5px;
     font-size: 20px;
     color: white;
-    transition: opacity 0.3s ease, transform 0.2s ease;
+    transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
 .header-button:hover {
@@ -62,12 +62,10 @@ header {
     transform: scale(1.1);
 }
 
-/* Ensure Font Awesome icons fit within buttons */
 .header-button i {
     font-size: 22px;
 }
 
-/* Theme toggle button */
 #theme-toggle {
     background: none;
     border: none;
@@ -75,25 +73,30 @@ header {
 }
 
 #theme-toggle img {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+#theme-toggle:hover img {
+    opacity: 0.7;
 }
 
 .header-left img {
     width: 20px;
     height: auto;
+    transition: opacity 0.3s ease;
 }
 
 .small-time {
     font-size: 14px;
 }
 
-/* Main content layout */
 main {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 150px; /* Adjust this value to increase spacing */
+    gap: 150px;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -102,16 +105,13 @@ main {
 section {
     flex-grow: 1;
     min-width: 320px;
-    color: white;
 }
 
-/* Adjust movies column to reach the theme toggle */
 section:last-child {
     flex-grow: 1.2;
     margin-right: 60px;
 }
 
-/* List styling with custom icons */
 ul li {
     margin-bottom: 20px;
     list-style: none;
@@ -122,42 +122,120 @@ ul li {
 
 .movies-container, .projects-container, .umich-container {
     position: relative;
-    display: flex; /* Match other list items */
+    display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    padding: 0; /* Remove any unwanted padding */
-    margin: 0; /* Remove any unwanted margin */
-    width: 100%; /* Ensures it doesn't shrink */
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
-#movies-popup, #projects-popup {
+#movies-popup, #projects-popup, #umich-popup {
     display: none;
     position: absolute;
-    top: -1px; /* Adjust for proper placement */
-    left: 50%; /* Moves it closer to the text */
-    width: 40px; /* Adjust size as needed */
-    height: auto;
-    background-color: transparent;
-}
-
-#umich-popup {
-    display: none;
-    position: absolute;
-    top: -1px; /* Adjust for proper placement */
-    left: 120%; /* Moves it closer to the text */
-    width: 40px; /* Adjust size as needed */
+    top: -1px;
+    left: 100%;
+    width: 40px;
     height: auto;
     background-color: transparent;
 }
 
 #movies-popup img, #projects-popup img, #umich-popup img {
-    width: 20px; /* Adjust the width to make it smaller */
-    height: auto; /* Maintains aspect ratio */
+    width: 20px;
+    height: auto;
 }
 
 .movies-container:hover #movies-popup,
 .projects-container:hover #projects-popup,
 .umich-container:hover #umich-popup {
     display: block;
+}
+
+.movies-container:hover strong,
+.projects-container:hover strong,
+.umich-container:hover strong,
+ul li:hover strong {
+    color: #999999;
+}
+
+.lighter-text {
+    color: #999999;
+}
+
+#email {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#email:hover {
+    opacity: 0.8;
+}
+
+/* Dark and Light Mode Styles */
+:root {
+    --background-dark: #161616;
+    --text-dark: white;
+    --hover-dark: rgba(255, 255, 255, 0.3);
+    --background-light: #f5f5f5;
+    --text-light: black;
+    --hover-light: rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.light-mode {
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+
+.light-mode header, 
+.light-mode main, 
+.light-mode section {
+    color: var(--text-light);
+}
+
+.light-mode .header-button i {
+    color: black;
+}
+
+.dark-mode .header-button i {
+    color: white;
+}
+
+.light-mode #email {
+    color: black;
+}
+
+.light-mode #theme-toggle:hover img {
+    background-color: var(--hover-light);
+}
+
+.dark-mode #theme-toggle:hover img {
+    background-color: var(--hover-dark);
+}
+
+.light-mode .header-left img {
+    content: url('assets/my-logo-light.png');
+}
+
+.dark-mode .header-left img {
+    content: url('assets/my-logo-dark.png');
+}
+
+.light-mode #movies-popup img,
+.light-mode #projects-popup img,
+.light-mode #umich-popup img {
+    content: url('assets/arrow-light.png');
+}
+
+.dark-mode #movies-popup img,
+.dark-mode #projects-popup img,
+.dark-mode #umich-popup img {
+    content: url('assets/arrow-dark.png');
 }
