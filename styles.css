@@ -32,8 +32,8 @@ header {
 .header-right {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Ensures even spacing */
-    gap: 15px; /* Adjust this value as needed */
+    justify-content: space-between;
+    gap: 5px;
     margin-left: auto;
 }
 
@@ -41,7 +41,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px; /* Ensure all icons have equal width */
+    width: 35px;
     height: 40px;
 }
 
@@ -85,7 +85,7 @@ header {
     width: 26px;
     height: 26px;
     transition: opacity 0.3s ease, transform 0.2s ease;
-    border-radius: 5px; /* Adds curved edges */
+    border-radius: 5px; 
 }
 
 #theme-toggle:hover img {
@@ -187,7 +187,7 @@ ul li:hover strong {
 }
 
 .light-mode .lighter-text {
-    color: rgb(46, 46, 46); /* Dark black arrow for light mode */
+    color: rgb(46, 46, 46);
 }
 
 #email {
@@ -267,8 +267,8 @@ ul li:hover strong {
 
 .back-arrow {
     display: inline-block;
-    font-size: 20px; /* Ensure the arrow is 40px */
-    color: white; /* Default white in dark mode */
+    font-size: 20px; 
+    color: white;
     text-decoration: none;
     transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
@@ -278,7 +278,6 @@ ul li:hover strong {
     transform: scale(1.1);
 }
 
-/* Change arrow color to black in light mode */
 .light-mode .back-arrow {
-    color: black; /* Dark black arrow for light mode */
+    color: black;
 }
