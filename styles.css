@@ -32,8 +32,8 @@ header {
 .header-right {
     display: flex;
     align-items: center;
-    justify-content: center; /* Ensures even spacing */
-    gap: 0px; /* Adjusts spacing between icons */
+    justify-content: space-between; /* Ensures even spacing */
+    gap: 15px; /* Adjust this value as needed */
     margin-left: auto;
 }
 
