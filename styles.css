@@ -146,11 +146,21 @@ ul li {
     width: 100%;
 }
 
-#movies-popup, #umich-popup {
+#movies-popup {
     display: none;
     position: absolute;
     top: -1px;
     left: 100%;
+    width: 40px;
+    height: auto;
+    background-color: transparent;
+}
+
+#umich-popup {
+    display: none;
+    position: absolute;
+    top: -1px;
+    left: 50%;
     width: 40px;
     height: auto;
     background-color: transparent;
