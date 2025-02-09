@@ -47,25 +47,25 @@ header {
 
 .header-left span, 
 #email {
-    font-size: 15px; /* Make text (name, email, 'ann arbor -', and '2025') 15px */
+    font-size: 15px;
 }
 
 .header-left .small-text {
-    font-size: 14px; /* Make 2025 smaller */
+    font-size: 14px;
 }
 
 
 .header-left .number-text, 
 #clock .number-text {
-    font-size: 1px; /* Ensure only numbers (clock, year) are 16px */
+    font-size: 1px; 
 }
 
 #clock {
-    font-size: 15px; /* Keep "ann arbor -" at 15px */
+    font-size: 15px;
 }
 
 #clock .number-text {
-    font-size: 16px; /* Ensure the time (numbers) is 16px */
+    font-size: 16px;
 }
 
 .header-button {
@@ -215,7 +215,6 @@ ul li:hover strong {
     opacity: 0.8;
 }
 
-/* Dark and Light Mode Styles */
 :root {
     --background-dark: #161616;
     --text-dark: white;

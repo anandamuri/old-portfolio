@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (mode === "light") {
           document.body.classList.remove("dark-mode");
           document.body.classList.add("light-mode");
-          themeIcon.src = "assets/moon-icon.png"; // Ensure this icon exists
+          themeIcon.src = "assets/moon-icon.png";
           localStorage.setItem("theme", "light");
       } else {
           document.body.classList.remove("light-mode");
@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // University of Michigan button redirect
   const umichButton = document.getElementById("umich-hover");
   if (umichButton) {
       umichButton.addEventListener("click", function () {
@@ -44,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Movies button redirect
   const moviesButton = document.getElementById("movies-hover");
   if (moviesButton) {
       moviesButton.addEventListener("click", function () {
