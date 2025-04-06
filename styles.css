@@ -330,7 +330,6 @@ ul li:hover strong {
     width: 100%;
     aspect-ratio: 2 / 3;
     object-fit: cover;
-    border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
