@@ -408,3 +408,13 @@ ul li:hover strong {
     }
 }
 
+@media (max-width: 768px) {
+    .movie-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .movie-grid {
+        justify-content: center;
+    }
+}
