@@ -126,6 +126,7 @@ main {
     margin: 0 auto;
 }
 
+
 section {
     flex-grow: 1;
     min-width: 320px;
@@ -293,4 +294,20 @@ ul li:hover strong {
 
 .light-mode .back-arrow {
     color: black;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        gap: 40px;
+        padding: 20px;
+    }
+
+    section:last-child {
+        margin-right: 0;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
 }
