@@ -295,6 +295,56 @@ ul li:hover strong {
     color: black;
 }
 
+.movie-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.movie-content {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.movie-list {
+    flex: 1;
+}
+
+.movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 600px;
+}
+
+.movie-card {
+    width: 140px;
+    text-align: center;
+}
+
+.movie-card img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.movie-card img:hover {
+    transform: scale(1.05);
+}
+
+.movie-card p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+
 @media (max-width: 768px) {
     main {
         flex-direction: column;
@@ -357,3 +407,4 @@ ul li:hover strong {
         font-size: 12px;
     }
 }
+
