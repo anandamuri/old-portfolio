@@ -106,6 +106,23 @@ header {
     opacity: 0.7;
 }
 
+.movie-page {
+    position: relative;
+}
+
+.back-arrow {
+    display: inline-block;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.back-arrow:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+}
+
 .header-left img {
     width: 20px;
     height: auto;
@@ -149,7 +166,7 @@ ul li {
     background-size: 15px;
 }
 
-.movies-container, .umich-container {
+.movies-container, .reading-container, .umich-container {
     position: relative;
     display: flex;
     align-items: center;
@@ -161,6 +178,16 @@ ul li {
 }
 
 #movies-popup {
+    display: none;
+    position: absolute;
+    top: -1px;
+    left: 70%;
+    width: 40px;
+    height: auto;
+    background-color: transparent;
+}
+
+#reading-popup {
     display: none;
     position: absolute;
     top: -1px;
@@ -294,13 +321,13 @@ ul li:hover strong {
     color: black;
 }
 
-.movie-page {
+.overall-page {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.movie-content {
+.overall-content {
     display: flex;
     flex-direction: row;
     gap: 60px;
@@ -308,11 +335,11 @@ ul li:hover strong {
     flex-wrap: wrap;
 }
 
-.movie-list {
+.overall-list {
     flex: 1;
 }
 
-.movie-grid .bullet-icon {
+.overall-grid .bullet-icon {
     width: 15px;
     height: 15px;
     margin-right: 5px;
@@ -325,37 +352,38 @@ ul li:hover strong {
     content: url('assets/bullet-light.png');
 }
 
-.movie-grid {
+.overall-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
+    gap: 12px;
     width: 100%;
     max-width: 1200px;
 }
 
-.movie-card {
+.overall-card {
     text-align: center;
 }
 
-.movie-card img {
+.overall-card img {
     width: 100%;
+    max-width: 150px; /* NEW: cap the width */
     aspect-ratio: 2 / 3;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.movie-card img:hover {
+.overall-card img:hover {
     transform: scale(1.05);
 }
 
-.movie-card p {
-    margin-top: 8px;
+.overall-card p {
+    margin-top: 4px;
     font-size: 14px;
     font-weight: bold; 
     color: white;
 }
 
-.light-mode .movie-card p {
+.light-mode .overall-card p {
     color: black;
     font-weight: bold; 
 }

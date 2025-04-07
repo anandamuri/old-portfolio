@@ -49,4 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.href = "movies.html";
       });
   }
+
+  const readingButton = document.getElementById("reading-hover");
+  if (readingButton) {
+    readingButton.addEventListener("click", function () {
+          window.location.href = "reading.html";
+      });
+  }
 });
