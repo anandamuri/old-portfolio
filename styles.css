@@ -283,7 +283,6 @@ ul li:hover strong {
     font-size: 20px; 
     color: white;
     text-decoration: none;
-    transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
 .back-arrow:hover {
@@ -314,15 +313,14 @@ ul li:hover strong {
 }
 
 .movie-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
-    justify-content: flex-start;
-    max-width: 700px;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .movie-card {
-    width: 140px;
     text-align: center;
 }
 
@@ -415,5 +413,12 @@ ul li:hover strong {
 
     .movie-grid {
         justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
     }
 }
