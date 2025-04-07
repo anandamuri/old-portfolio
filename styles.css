@@ -321,6 +321,10 @@ ul li:hover strong {
     bottom: 1px;
 }
 
+.light-mode .movie-grid .bullet-icon {
+    content: url('assets/bullet-light.png');
+}
+
 .movie-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -347,7 +351,13 @@ ul li:hover strong {
 .movie-card p {
     margin-top: 8px;
     font-size: 14px;
-    color: #ccc;
+    font-weight: bold; 
+    color: white;
+}
+
+.light-mode .movie-card p {
+    color: black;
+    font-weight: bold; 
 }
 
 
