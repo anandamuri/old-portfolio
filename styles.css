@@ -312,6 +312,15 @@ ul li:hover strong {
     flex: 1;
 }
 
+.movie-grid .bullet-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
 .movie-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
