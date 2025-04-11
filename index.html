@@ -8,55 +8,29 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        #entry-mask {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        opacity: 1;
-        transition: opacity 1s ease;
-        }
-
-        #entry-mask .logo {
-        font-size: 2rem;
-        color: white;
-        font-family: sans-serif;
-        }
-    </style>
 </head>
 <body>
-    <div id="entry-mask">
-    <div class="logo">anish nandamuri</div>
-    </div>
-
-    <div class="container">
+  <div class="container">
     <header>
-        <div class="header-left">
+      <div class="header-left">
         <img src="assets/my-logo-dark.png" alt="Logo">
         <span>&copy; <span class="small-text">2025</span> anish nandamuri</span>
-        </div>
-        <div class="header-center">
+      </div>
+      <div class="header-center">
         <span id="clock">ann arbor - <span class="number-text">Loading...</span></span>
         <a href="mailto:anish.nandamuri06@gmail.com" id="email">anishn@umich.edu</a>
-        </div>
-        <div class="header-right">
+      </div>
+      <div class="header-right">
         <a href="https://www.linkedin.com/in/anishnandamuri" target="_blank" class="header-button" title="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
+          <i class="fa-brands fa-linkedin"></i>
         </a>
         <a href="https://github.com/anandamuri" target="_blank" class="header-button" title="GitHub">
-            <i class="fa-brands fa-github"></i>
+          <i class="fa-brands fa-github"></i>
         </a>
         <button id="theme-toggle" title="Toggle Theme">
-            <img id="theme-icon" src="assets/sun-icon.png" alt="Theme Toggle">
+          <img id="theme-icon" src="assets/sun-icon.png" alt="Theme Toggle">
         </button>
-        </div>
+      </div>
     </header>
     <main>
         <main>
@@ -120,18 +94,6 @@
                 </ul>
             </section>
         </main>
-    </div>
-
-    <script>
-    window.addEventListener('load', () => {
-        const mask = document.getElementById('entry-mask');
-        setTimeout(() => {
-        mask.style.opacity = '0';
-        setTimeout(() => {
-            mask.style.display = 'none';
-        }, 1000);
-        }, 2500);
-    });
-    </script>
+  </div>
 </body>
 </html>
