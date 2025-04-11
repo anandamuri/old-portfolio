@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
       if (mode === "light") {
           document.body.classList.remove("dark-mode");
           document.body.classList.add("light-mode");
-          themeIcon.src = "assets/moon-icon.png";
+          themeIcon.src = "assets/icons/moon-icon.png";
           localStorage.setItem("theme", "light");
       } else {
           document.body.classList.remove("light-mode");
           document.body.classList.add("dark-mode");
-          themeIcon.src = "assets/sun-icon.png";
+          themeIcon.src = "assets/icons/sun-icon.png";
           localStorage.setItem("theme", "dark");
       }
   }

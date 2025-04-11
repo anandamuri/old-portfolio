@@ -163,13 +163,13 @@ section:last-child {
 ul li {
     margin-bottom: 20px;
     list-style: none;
-    background: url('assets/bullet-dark.png') no-repeat left center;
+    background: url('assets/icons/bullet-dark.png') no-repeat left center;
     background-size: 15px;
     padding-left: 20px;
 }
 
 .light-mode ul li {
-    background: url('assets/bullet-light.png') no-repeat left center;
+    background: url('assets/icons/bullet-light.png') no-repeat left center;
     background-size: 15px;
 }
 
@@ -217,19 +217,19 @@ ul li {
 }
 
 .light-mode .header-left img {
-    content: url('assets/my-logo-light.png');
+    content: url('assets/icons/my-logo-light.png');
 }
 
 .dark-mode .header-left img {
-    content: url('assets/my-logo-dark.png');
+    content: url('assets/icons/my-logo-dark.png');
 }
 
 .light-mode #movies-popup img, .light-mode #reading-popup img, .light-mode #umich-popup img {
-    content: url('assets/arrow-light.png');
+    content: url('assets/icons/arrow-light.png');
 }
 
 .dark-mode #movies-popup img, .dark-mode #reading-popup img, .dark-mode #umich-popup img {
-    content: url('assets/arrow-dark.png');
+    content: url('assets/icons/arrow-dark.png');
 }
 
 /* APPLIES TO INDEX PAGE */
@@ -320,11 +320,11 @@ ul li {
 }
 
 .light-mode .bullet-icon {
-    content: url('assets/bullet-light.png');
+    content: url('assets/icons/bullet-light.png');
 }
 
 .dark-mode .bullet-icon {
-    content: url('assets/bullet-dark.png');
+    content: url('assets/icons/bullet-dark.png');
 }
 
 
