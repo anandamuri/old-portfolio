@@ -1,44 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anish Nandamuri</title>
-    <link rel="icon" href="assets/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anish Nandamuri</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="header-left">
-                <img src="assets/my-logo-dark.png" alt="Logo">
-                <span>&copy; <span class="small-text">2025</span> anish nandamuri</span>
-            </div>
-            <div class="header-center">
-                <span id="clock">ann arbor - <span class="number-text">Loading...</span></span>
-                <a href="mailto:anish.nandamuri06@gmail.com" id="email">anishn@umich.edu</a>
-            </div>
-            <div class="header-right">
-                <a href="https://www.linkedin.com/in/anishnandamuri" target="_blank" class="header-button" title="LinkedIn">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/anandamuri" target="_blank" class="header-button" title="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <button id="theme-toggle" title="Toggle Theme">
-                    <img id="theme-icon" src="assets/sun-icon.png" alt="Theme Toggle">
-                </button>
-            </div>
-        </header>
-        <main>
-            <section>
-                <a href="index.html" title="Back to Home" class="back-arrow">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-            </section>
-        </main>
-    </div>
+<body class="bg-gray-900 text-white">
+  <div class="container">
+    <header>
+      <div class="header-left">
+        <img src="assets/my-logo-dark.png" alt="Logo">
+        <span>&copy; <span class="small-text">2025</span> anish nandamuri</span>
+      </div>
+      <div class="header-center">
+        <span id="clock">ann arbor - <span class="number-text">Loading...</span></span>
+        <a href="mailto:anish.nandamuri06@gmail.com" id="email">anishn@umich.edu</a>
+      </div>
+      <div class="header-right">
+        <a href="https://www.linkedin.com/in/anishnandamuri" target="_blank" class="header-button" title="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/anandamuri" target="_blank" class="header-button" title="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <button id="theme-toggle" title="Toggle Theme">
+          <img id="theme-icon" src="assets/sun-icon.png" alt="Theme Toggle">
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <a href="index.html" title="Back to Home" class="back-arrow">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+      </section>
+
+      <!-- Skills Section -->
+      <section class="text-center py-16">
+        <h1 class="text-5xl font-bold italic mb-12">Skills</h1>
+        <div class="max-w-6xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 px-4">
+          <!-- Icon box example: -->
+          <div class="bg-gray-800 rounded-xl p-4 flex items-center justify-center">
+            <img src="images/python.svg" alt="Python" class="h-10 w-10">
+          </div>
+          <div class="bg-gray-800 rounded-xl p-4 flex items-center justify-center">
+            <img src="images/js.svg" alt="JavaScript" class="h-10 w-10">
+          </div>
+          <div class="bg-gray-800 rounded-xl p-4 flex items-center justify-center">
+            <img src="images/react.svg" alt="React" class="h-10 w-10">
+          </div>
+          <!-- Add more icons below as needed -->
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>

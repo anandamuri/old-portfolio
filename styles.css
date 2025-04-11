@@ -1,10 +1,4 @@
-/* applies to all pages */
-/* applies to index page*/
-/* applies to reading page */
-/* applies to movies page */
-/* applies to classes page */
-/* applies to skills page */
-
+/* APPLIES TO ALL PAGES */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -44,6 +38,24 @@ header {
     margin-left: auto;
 }
 
+.header-left span, #email {
+    font-size: 15px;
+}
+
+.header-left .small-text {
+    font-size: 14px;
+}
+
+.header-left .number-text, #clock .number-text {
+    font-size: 1px; 
+}
+
+.header-left img {
+    width: 20px;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+
 .header-button, #theme-toggle {
     display: flex;
     align-items: center;
@@ -52,33 +64,7 @@ header {
     height: 40px;
 }
 
-.header-left span, 
-#email {
-    font-size: 15px;
-}
-
-.header-left .small-text {
-    font-size: 14px;
-}
-
-
-.header-left .number-text, 
-#clock .number-text {
-    font-size: 1px; 
-}
-
-#clock {
-    font-size: 15px;
-}
-
-#clock .number-text {
-    font-size: 16px;
-}
-
 .header-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: transparent;
     text-decoration: none;
     padding: 5px;
@@ -113,8 +99,27 @@ header {
     opacity: 0.7;
 }
 
-.movie-page {
-    position: relative;
+#clock {
+    font-size: 15px;
+}
+
+#clock .number-text {
+    font-size: 16px;
+}
+
+#email {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#email:hover {
+    opacity: 0.8;
+}
+
+.small-time {
+    font-size: 14px;
 }
 
 .back-arrow {
@@ -123,6 +128,7 @@ header {
     color: white;
     text-decoration: none;
     margin-bottom: 20px;
+    transform-origin: left center;
 }
 
 .back-arrow:hover {
@@ -130,14 +136,8 @@ header {
     transform: scale(1.1);
 }
 
-.header-left img {
-    width: 20px;
-    height: auto;
-    transition: opacity 0.3s ease;
-}
-
-.small-time {
-    font-size: 14px;
+.light-mode .back-arrow {
+    color: black;
 }
 
 main {
@@ -173,86 +173,6 @@ ul li {
     background-size: 15px;
 }
 
-.movies-container, .reading-container, .umich-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-#movies-popup {
-    display: none;
-    position: absolute;
-    top: -1px;
-    left: 70%;
-    width: 40px;
-    height: auto;
-    background-color: transparent;
-}
-
-#reading-popup {
-    display: none;
-    position: absolute;
-    top: -1px;
-    left: 70%;
-    width: 40px;
-    height: auto;
-    background-color: transparent;
-}
-
-#umich-popup {
-    display: none;
-    position: absolute;
-    top: -1px;
-    left: 100%;
-    width: 40px;
-    height: auto;
-    background-color: transparent;
-}
-
-#movies-popup img, 
-#reading-popup img, 
-#umich-popup img {
-    width: 20px;
-    height: auto;
-}
-
-.movies-container:hover #movies-popup, 
-.reading-container:hover #reading-popup, 
-.umich-container:hover #umich-popup {
-    display: block;
-}
-
-.movies-container:hover strong,
-.reading-container:hover strong,
-.umich-container:hover strong,
-ul li:hover strong {
-    color: #999999;
-}
-
-.lighter-text {
-    color: #999999;
-}
-
-.light-mode .lighter-text {
-    color: rgb(46, 46, 46);
-}
-
-#email {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-#email:hover {
-    opacity: 0.8;
-}
-
 :root {
     --background-dark: #161616;
     --text-dark: white;
@@ -272,9 +192,7 @@ ul li:hover strong {
     color: var(--text-light);
 }
 
-.light-mode header, 
-.light-mode main, 
-.light-mode section {
+.light-mode header, .light-mode main, .light-mode section {
     color: var(--text-light);
 }
 
@@ -306,36 +224,66 @@ ul li:hover strong {
     content: url('assets/my-logo-dark.png');
 }
 
-.light-mode #movies-popup img, 
-.light-mode #reading-popup img, 
-.light-mode #umich-popup img {
+.light-mode #movies-popup img, .light-mode #reading-popup img, .light-mode #umich-popup img {
     content: url('assets/arrow-light.png');
 }
 
-.dark-mode #movies-popup img, 
-.dark-mode #reading-popup img, 
-.dark-mode #umich-popup img {
+.dark-mode #movies-popup img, .dark-mode #reading-popup img, .dark-mode #umich-popup img {
     content: url('assets/arrow-dark.png');
 }
 
-.back-arrow {
-    display: inline-block;
-    font-size: 20px;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 20px;
-    transform-origin: left center; /* this line anchors it to the left */
+/* APPLIES TO INDEX PAGE */
+.movies-container, .reading-container, .umich-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
-.back-arrow:hover {
-    opacity: 0.7;
-    transform: scale(1.1);
+#movies-popup, #reading-popup, #umich-popup {
+    display: none;
+    position: absolute;
+    top: -1px;
+    width: 40px;
+    height: auto;
+    background-color: transparent;
 }
 
-.light-mode .back-arrow {
-    color: black;
+#movies-popup { left: 70%; }
+#reading-popup { left: 70%; }
+#umich-popup { left: 100%; }
+
+#movies-popup img, #reading-popup img, #umich-popup img {
+    width: 20px;
+    height: auto;
 }
 
+.movies-container:hover #movies-popup, .reading-container:hover #reading-popup, .umich-container:hover #umich-popup {
+    display: block;
+}
+
+.movies-container:hover strong, .reading-container:hover strong, .umich-container:hover strong, ul li:hover strong {
+    color: #999999;
+}
+
+.lighter-text {
+    color: #999999;
+}
+
+.light-mode .lighter-text {
+    color: rgb(46, 46, 46);
+}
+
+
+/* APPLIES TO READING PAGE */
+/* Uses overall- classes shared with movies */
+
+
+/* APPLIES TO MOVIES PAGE */
 .overall-page {
     display: flex;
     flex-direction: column;
@@ -354,6 +302,14 @@ ul li:hover strong {
     flex: 1;
 }
 
+.overall-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 1200px;
+}
+
 .overall-grid .bullet-icon {
     width: 15px;
     height: 15px;
@@ -363,17 +319,14 @@ ul li:hover strong {
     bottom: 1px;
 }
 
-.light-mode .movie-grid .bullet-icon {
+.light-mode .bullet-icon {
     content: url('assets/bullet-light.png');
 }
 
-.overall-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
-    width: 100%;
-    max-width: 1200px;
+.dark-mode .bullet-icon {
+    content: url('assets/bullet-dark.png');
 }
+
 
 .overall-card {
     text-align: center;
@@ -381,7 +334,7 @@ ul li:hover strong {
 
 .overall-card img {
     width: 100%;
-    max-width: 150px; /* NEW: cap the width */
+    max-width: 150px;
     aspect-ratio: 2 / 3;
     object-fit: cover;
     transition: transform 0.3s ease;
@@ -394,16 +347,31 @@ ul li:hover strong {
 .overall-card p {
     margin-top: 4px;
     font-size: 14px;
-    font-weight: bold; 
+    font-weight: bold;
     color: white;
 }
 
 .light-mode .overall-card p {
     color: black;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 
+/* APPLIES TO CLASSES PAGE */
+/* No specific unique styles currently */
+
+
+/* APPLIES TO SKILLS PAGE */
+.skills-icon {
+    transition: transform 0.2s ease-in-out;
+}
+
+.skills-icon:hover {
+    transform: scale(1.1);
+}
+
+
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
     main {
         flex-direction: column;
@@ -459,15 +427,7 @@ ul li:hover strong {
     body {
         overflow-x: hidden;
     }
-}
 
-@media (max-width: 400px) {
-    #clock, #email {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 768px) {
     .movie-content {
         flex-direction: column;
         gap: 30px;
@@ -475,12 +435,14 @@ ul li:hover strong {
 
     .movie-grid {
         justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
     }
 }
 
-@media (max-width: 768px) {
-    .movie-grid {
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: center;
+@media (max-width: 400px) {
+    #clock,
+    #email {
+        font-size: 12px;
     }
 }
