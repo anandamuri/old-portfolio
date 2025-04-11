@@ -1,98 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anish Nandamuri</title>
-    <link rel="icon" href="assets/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <div class="header-left">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Anish Nandamuri</title>
+            <link rel="icon" href="assets/favicon.png" type="image/png">
+            <link rel="stylesheet" href="styles.css">
+            <script defer src="script.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+            <style>
+              #entry-mask {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999;
+                opacity: 1;
+                transition: opacity 1s ease;
+              }
+        
+              #entry-mask .logo {
+                font-size: 2rem;
+                color: white;
+                font-family: sans-serif;
+              }
+            </style>
+        </head>
+        <body>
+          <div id="entry-mask">
+            <div class="logo">anish nandamuri</div>
+          </div>
+        
+          <div class="container">
+            <header>
+              <div class="header-left">
                 <img src="assets/my-logo-dark.png" alt="Logo">
                 <span>&copy; <span class="small-text">2025</span> anish nandamuri</span>
-            </div>
-            <div class="header-center">
+              </div>
+              <div class="header-center">
                 <span id="clock">ann arbor - <span class="number-text">Loading...</span></span>
                 <a href="mailto:anish.nandamuri06@gmail.com" id="email">anishn@umich.edu</a>
-            </div>
-            <div class="header-right">
+              </div>
+              <div class="header-right">
                 <a href="https://www.linkedin.com/in/anishnandamuri" target="_blank" class="header-button" title="LinkedIn">
-                    <i class="fa-brands fa-linkedin"></i>
+                  <i class="fa-brands fa-linkedin"></i>
                 </a>
                 <a href="https://github.com/anandamuri" target="_blank" class="header-button" title="GitHub">
-                    <i class="fa-brands fa-github"></i>
+                  <i class="fa-brands fa-github"></i>
                 </a>
                 <button id="theme-toggle" title="Toggle Theme">
-                    <img id="theme-icon" src="assets/sun-icon.png" alt="Theme Toggle">
+                  <img id="theme-icon" src="assets/sun-icon.png" alt="Theme Toggle">
                 </button>
-            </div>
-        </header>
-        <main>
-            <section>
-                <h2>past</h2>
-                <ul>
-                    <li><strong>Russian Roulette Extension</strong> / <span class="lighter-text">Built a basic chrome extension that randomly deletes your friend's tabs.</span></li>
-                    <li><strong>Solar System Simulation</strong> / <span class="lighter-text"> Built an animated solar system model made with Python Turtle.</span></li>
-                    <li><strong>IAE Model UN</strong> / <span class="lighter-text">Managed 200+ members at conferences where delegates debate global issues.</span></li>
-                    <li><strong>Wayne State University</strong> / <span class="lighter-text">Conducted comparative study on brif and bsnsing packages with professor.</span></li>
-                </ul>
-            </section>
-            <section>
-                <h2>current</h2>
-                <ul>
-                    <li>
-                        <div class="umich-container">
-                            <span id="umich-hover">
-                                <strong>University of Michigan</strong> / <span class="lighter-text"> Studying Business @ Ross and CS @ Engineering.</span>
-                            </span>
-                            <div id="umich-popup">
-                                <img src="assets/arrow-dark.png" alt="UMich Popup">
-                            </div>
-                        </div>
-                    </li>                  
-                    <li><strong>AppSoar Development</strong> / <span class="lighter-text">Building something fun for accountability.</span></li>
-                    <li><strong>S-Chess</strong> / <span class="lighter-text">Building something fun for chess.</span></li>
-                    <li><strong>Michigan Data Science Team</strong> / <span class="lighter-text">Building projects to explore ML/AI and Data Science.</span></li>
-                    <li><strong>Michigan Mars Rover Team</strong> / <span class="lighter-text">Building Mars Rover's perception capabilities.</span></li>
-                </ul>
-            </section>
-            <section>
-                <h2>hobbies</h2>
-                <ul>
-                    <li>
-                        <div class="movies-container">
-                            <span id="movies-hover">
-                                <strong>Movies</strong> / <span class="lighter-text">Entertainment.</span>
-                            </span>
-                            <div id="movies-popup">
-                                <img src="assets/arrow-dark.png" alt="Movies Popup">
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="reading-container">
-                            <span id="reading-hover">
-                                <strong>Reading</strong> / <span class="lighter-text">Learning.</span>
-                            </span>
-                            <div id="reading-popup">
-                                <img src="assets/arrow-dark.png" alt="Reading Popup">
-                            </div>
-                        </div>
-                    </li>
-                    <li><strong>Lifting</strong> / <span class="lighter-text">Strength.</span></li>
-                    <li><strong>IM Football</strong> / <span class="lighter-text">Competition.</span></li>
-                    <li><strong>Poker</strong> / <span class="lighter-text">Fun.</span></li>
-                    <li><strong>Chess</strong> / <span class="lighter-text">Strategy.</span></li>
-                    <li><strong>Football</strong> / <span class="lighter-text">Detroit Lions.</span></li>
-                    <li><strong>Hockey</strong> / <span class="lighter-text">New Jersey Devils.</span></li>
-                </ul>
-            </section>
-        </main>
-    </div>
-</body>
-</html>
+              </div>
+            </header>
+            <main>
+                <main>
+                    <section>
+                        <h2>past</h2>
+                        <ul>
+                            <li><strong>Russian Roulette Extension</strong> / <span class="lighter-text">Built a basic chrome extension that randomly deletes your friend's tabs.</span></li>
+                            <li><strong>Solar System Simulation</strong> / <span class="lighter-text"> Built an animated solar system model made with Python Turtle.</span></li>
+                            <li><strong>IAE Model UN</strong> / <span class="lighter-text">Managed 200+ members at conferences where delegates debate global issues.</span></li>
+                            <li><strong>Wayne State University</strong> / <span class="lighter-text">Conducted comparative study on brif and bsnsing packages with professor.</span></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>current</h2>
+                        <ul>
+                            <li>
+                                <div class="umich-container">
+                                    <span id="umich-hover">
+                                        <strong>University of Michigan</strong> / <span class="lighter-text"> Studying Business @ Ross and CS @ Engineering.</span>
+                                    </span>
+                                    <div id="umich-popup">
+                                        <img src="assets/arrow-dark.png" alt="UMich Popup">
+                                    </div>
+                                </div>
+                            </li>                  
+                            <li><strong>AppSoar Development</strong> / <span class="lighter-text">Building something fun for accountability.</span></li>
+                            <li><strong>S-Chess</strong> / <span class="lighter-text">Building something fun for chess.</span></li>
+                            <li><strong>Michigan Data Science Team</strong> / <span class="lighter-text">Building projects to explore ML/AI and Data Science.</span></li>
+                            <li><strong>Michigan Mars Rover Team</strong> / <span class="lighter-text">Building Mars Rover's perception capabilities.</span></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>hobbies</h2>
+                        <ul>
+                            <li>
+                                <div class="movies-container">
+                                    <span id="movies-hover">
+                                        <strong>Movies</strong> / <span class="lighter-text">Entertainment.</span>
+                                    </span>
+                                    <div id="movies-popup">
+                                        <img src="assets/arrow-dark.png" alt="Movies Popup">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="reading-container">
+                                    <span id="reading-hover">
+                                        <strong>Reading</strong> / <span class="lighter-text">Learning.</span>
+                                    </span>
+                                    <div id="reading-popup">
+                                        <img src="assets/arrow-dark.png" alt="Reading Popup">
+                                    </div>
+                                </div>
+                            </li>
+                            <li><strong>Lifting</strong> / <span class="lighter-text">Strength.</span></li>
+                            <li><strong>IM Football</strong> / <span class="lighter-text">Competition.</span></li>
+                            <li><strong>Poker</strong> / <span class="lighter-text">Fun.</span></li>
+                            <li><strong>Chess</strong> / <span class="lighter-text">Strategy.</span></li>
+                            <li><strong>Football</strong> / <span class="lighter-text">Detroit Lions.</span></li>
+                            <li><strong>Hockey</strong> / <span class="lighter-text">New Jersey Devils.</span></li>
+                        </ul>
+                    </section>
+                </main>
+          </div>
+        
+          <script>
+            window.addEventListener('load', () => {
+              const mask = document.getElementById('entry-mask');
+              setTimeout(() => {
+                mask.style.opacity = '0';
+                setTimeout(() => {
+                  mask.style.display = 'none';
+                }, 1000);
+              }, 2500);
+            });
+          </script>
+        </body>
+        </html>
+        
