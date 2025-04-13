@@ -39,21 +39,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const umichButton = document.getElementById("umich-hover");
   if (umichButton) {
       umichButton.addEventListener("click", function () {
-          window.location.href = "classes.html";
+          window.location.href = "classes/";
       });
   }
 
   const moviesButton = document.getElementById("movies-hover");
   if (moviesButton) {
       moviesButton.addEventListener("click", function () {
-          window.location.href = "movies.html";
+          window.location.href = "movies/";
       });
   }
 
   const readingButton = document.getElementById("reading-hover");
   if (readingButton) {
     readingButton.addEventListener("click", function () {
-          window.location.href = "reading.html";
+          window.location.href = "reading/";
       });
   }
 });
