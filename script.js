@@ -1,13 +1,3 @@
-function updateClock() {
-  const now = new Date();
-  const options = { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
-  const timeString = new Intl.DateTimeFormat('en-US', options).format(now);
-  document.getElementById('clock').innerHTML = `ann arbor - <span class="small-time">${timeString}</span>`;
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-
 document.addEventListener("DOMContentLoaded", function () {
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
@@ -36,24 +26,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const umichButton = document.getElementById("umich-hover");
-  if (umichButton) {
-      umichButton.addEventListener("click", function () {
-          window.location.href = "classes/";
-      });
-  }
-
-  const moviesButton = document.getElementById("movies-hover");
-  if (moviesButton) {
-      moviesButton.addEventListener("click", function () {
-          window.location.href = "movies/";
-      });
-  }
-
-  const readingButton = document.getElementById("reading-hover");
-  if (readingButton) {
-    readingButton.addEventListener("click", function () {
-          window.location.href = "reading/";
-      });
-  }
-});
+    const redirects = {
+      "umich-hover": "classes/",
+      "movies-hover": "movies/",
+      "reading-hover": "reading/"
+    };
+  
+    for (const id in redirects) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener("click", () => {
+          window.location.href = redirects[id];
+        });
+      }
+    }
+  });
