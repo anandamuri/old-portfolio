@@ -50,6 +50,19 @@ body {
   .header-left .small-text {
     font-size: 14px;
   }
+
+.light-mode header {
+    background-color: var(--header-light);
+    color: black;
+  }
+  
+  .light-mode header a,
+  .light-mode header span,
+  .light-mode header svg {
+    color: black !important;
+    fill: black !important;
+  }
+  
   
   #email {
     font-size: 15px;
