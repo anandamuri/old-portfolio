@@ -1,6 +1,5 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.152.2";
 
-
 let cubeMaterial, dotMaterial, lineMaterial;
 
 const materials = {
@@ -16,9 +15,7 @@ const materials = {
   }
 };
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  // === THEME TOGGLE ===
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
 
@@ -46,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme") || "dark";
   setTheme(savedTheme);
 
-  // === THREE.JS SETUP ===
   const canvas = document.getElementById("three-canvas");
   if (!canvas) return;
 
@@ -66,16 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = new THREE.Group();
   scene.add(root);
 
-  const cubeMaterial = new THREE.MeshStandardMaterial({ color: 0x000000 });
-  const dotMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-  const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
+  cubeMaterial = new THREE.MeshStandardMaterial({ color: 0x000000 });
+  dotMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
   const dotGeometry = new THREE.SphereGeometry(0.03, 6, 6);
 
   const baseSize = 2;
   let clickCount = 0;
   const placed = new Set();
 
-  const mainCube = createCube(0, 0, 0, baseSize);
   const faceCubes = [];
   const cornerCubes = [];
 
@@ -98,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     root.add(mesh);
 
     new TWEEN.Tween(mesh.scale)
-      .to({ x: 1, y: 1, z: 1 }, 400)
+      .to({ x: 1, y: 1, z: 1 }, 1000)
       .easing(TWEEN.Easing.Quadratic.Out)
       .start();
 
@@ -125,12 +120,46 @@ document.addEventListener("DOMContentLoaded", () => {
     cubeArray.length = 0;
   }
 
-  // === CLICK TO GROW/SHRINK LOOP ===
+  // === STEP-BY-STEP STARTUP ANIMATION ===
+    const mainCube = createCube(0, 0, 0, baseSize);
+
+  setTimeout(() => {
+    const dirs = [
+      [1, 0, 0], [-1, 0, 0],
+      [0, 1, 0], [0, -1, 0],
+      [0, 0, 1], [0, 0, -1],
+    ];
+    for (let [dx, dy, dz] of dirs) {
+      const faceCubeSize = 1.;
+      const cube = createCube(dx * faceCubeSize, dy * faceCubeSize, dz * faceCubeSize, faceCubeSize);
+      if (cube) faceCubes.push(cube);
+    }
+    clickCount++; // simulate stage 1
+
+    setTimeout(() => {
+      const cornerOffsets = [
+        [1, 1, 1], [1, 1, -1], [1, -1, 1], [1, -1, -1],
+        [-1, 1, 1], [-1, 1, -1], [-1, -1, 1], [-1, -1, -1],
+      ];
+      faceCubes.forEach(parent => {
+        const pos = parent.position;
+        for (let [dx, dy, dz] of cornerOffsets) {
+          const x = pos.x + dx * 0.5;
+          const y = pos.y + dy * 0.5;
+          const z = pos.z + dz * 0.5;
+          const cube = createCube(x, y, z, 0.5);
+          if (cube) cornerCubes.push(cube);
+        }
+      });
+      clickCount++; // simulate stage 2
+    }, 1000);
+  }, 1000);
+
+  // === CLICK-BASED LOOP ===
   canvas.addEventListener("click", () => {
     const cycle = clickCount % 4;
-  
+
     if (cycle === 0) {
-      // Add face cubes
       const dirs = [
         [1, 0, 0], [-1, 0, 0],
         [0, 1, 0], [0, -1, 0],
@@ -142,44 +171,38 @@ document.addEventListener("DOMContentLoaded", () => {
         if (cube) faceCubes.push(cube);
       }
     }
-  
+
     else if (cycle === 1) {
-      // Add corner cubes
+      const cornerOffsets = [
+        [1, 1, 1], [1, 1, -1], [1, -1, 1], [1, -1, -1],
+        [-1, 1, 1], [-1, 1, -1], [-1, -1, 1], [-1, -1, -1],
+      ];
       faceCubes.forEach(parent => {
-        const cornerOffsets = [
-            [1, 1, 1], [1, 1, -1], [1, -1, 1], [1, -1, -1],
-            [-1, 1, 1], [-1, 1, -1], [-1, -1, 1], [-1, -1, -1],
-          ];
-          
-          faceCubes.forEach(parent => {
-            const pos = parent.position;
-            for (let [dx, dy, dz] of cornerOffsets) {
-              const x = pos.x + dx * 0.5;
-              const y = pos.y + dy * 0.5;
-              const z = pos.z + dz * 0.5;
-              const cube = createCube(x, y, z, 0.5);
-              if (cube) cornerCubes.push(cube);
-            }
-          });
-          
+        const pos = parent.position;
+        for (let [dx, dy, dz] of cornerOffsets) {
+          const x = pos.x + dx * 0.5;
+          const y = pos.y + dy * 0.5;
+          const z = pos.z + dz * 0.5;
+          const cube = createCube(x, y, z, 0.5);
+          if (cube) cornerCubes.push(cube);
+        }
       });
     }
-  
+
     else if (cycle === 2) {
       removeCubes(cornerCubes);
     }
-  
+
     else if (cycle === 3) {
       removeCubes(faceCubes);
-      placed.clear(); // Allow re-adding same cube positions next cycle
-      placed.add(makeKey(0, 0, 0, baseSize)); // Keep base cube key
+      placed.clear();
+      placed.add(makeKey(0, 0, 0, baseSize));
     }
-  
+
     clickCount++;
   });
-  
 
-  // === MOUSE ROTATION ===
+  // === ROTATION ===
   const mouse = { x: 0, y: 0 };
   document.addEventListener("mousemove", (e) => {
     const { innerWidth, innerHeight } = window;
@@ -190,10 +213,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function animate() {
     requestAnimationFrame(animate);
     TWEEN.update();
-
     root.rotation.x += (mouse.y * 0.3 - root.rotation.x) * 0.05;
     root.rotation.y += (mouse.x * 0.3 - root.rotation.y) * 0.05;
-
     renderer.render(scene, camera);
   }
 
