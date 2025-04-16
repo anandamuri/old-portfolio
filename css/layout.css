@@ -1,12 +1,13 @@
 main {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 125px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 125px;
+  padding: 0px 0px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
   
   section {
     flex-grow: 1;

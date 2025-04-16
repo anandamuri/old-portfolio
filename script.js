@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   dotMaterial = materials.dark.dot;
   lineMaterial = materials.dark.line;
 
-  const levels = [[], [], []];
+  const levels = [[], []];
 
   function createCubeAt(position, size = 1, level = 0) {
     const geo = new THREE.BoxGeometry(size, size, size);
@@ -104,31 +104,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const x = (Math.random() - 0.5) * radius * 2;
     const y = (Math.random() - 0.5) * radius * 2;
     const z = (Math.random() - 0.5) * radius * 2;
-    createCubeAt(new THREE.Vector3(x, y, z), 1, 0);
+    setTimeout(() => {
+      createCubeAt(new THREE.Vector3(x, y, z), 1, 0);
+    }, i * 20);
   }
 
-  let clickCount = 0;
+  let expanded = false;
   canvas.addEventListener("click", () => {
-    clickCount++;
-    const stage = clickCount % 4;
+    const parentLevel = 0;
+    const childLevel = 1;
+    const parentCubes = levels[parentLevel];
+    const newSize = 0.5;
 
-    if (stage === 1 || stage === 2) {
-      const parentLevel = stage - 1;
-      const childLevel = stage;
-      const parentCubes = levels[parentLevel];
-      const newSize = Math.pow(0.5, childLevel); // 0.5, 0.25, etc.
-
+    if (!expanded) {
       for (const parent of parentCubes) {
         const verts = getVertexWorldPositions(parent);
         for (const v of verts) {
           createCubeAt(v, newSize, childLevel);
         }
       }
-    }
-
-    if (stage === 3 || stage === 0) {
-      const removeLevel = stage === 3 ? 2 : 1;
-      const targets = levels[removeLevel];
+      expanded = true;
+    } else {
+      const targets = levels[childLevel];
       for (const cube of targets) {
         new TWEEN.Tween(cube.scale)
           .to({ x: 0, y: 0, z: 0 }, 400)
@@ -138,7 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           .start();
       }
-      levels[removeLevel] = [];
+      levels[childLevel] = [];
+      expanded = false;
     }
   });
 

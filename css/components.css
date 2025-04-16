@@ -196,7 +196,7 @@
 
 .skills-icons img {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px; /* reduced from 1200px */
   height: auto;
-  transform: scale(1); 
+  transform: scale(1);
 }
