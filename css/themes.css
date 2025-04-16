@@ -1,34 +1,35 @@
 .dark-mode {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
-  }
-  
-  .light-mode {
-    background-color: var(--background-light);
-    color: var(--text-light);
-  }
-  
-  .light-mode header, .light-mode main, .light-mode section {
-    color: var(--text-light);
-  }
-  
-  .light-mode .header-button i {
-    color: black;
-  }
-  
-  .dark-mode .header-button i {
-    color: white;
-  }
-  
-  .light-mode #email {
-    color: black;
-  }
-  
-  .light-mode #theme-toggle:hover img {
-    background-color: var(--hover-light);
-  }
-  
-  .dark-mode #theme-toggle:hover img {
-    background-color: var(--hover-dark);
-  }
-  
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+.light-mode {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+.light-mode header,
+.light-mode main,
+.light-mode section {
+  color: var(--text-light);
+}
+
+.light-mode .header-button i {
+  color: black;
+}
+
+.dark-mode .header-button i {
+  color: white;
+}
+
+.light-mode #email {
+  color: black;
+}
+
+.light-mode #theme-toggle:hover img {
+  background-color: var(--hover-light);
+}
+
+.dark-mode #theme-toggle:hover img {
+  background-color: var(--hover-dark);
+}

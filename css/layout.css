@@ -2,56 +2,56 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 125px;
-  padding: 0px 0px;
+  gap: 30px; /* reduced from 125px */
+  padding: 0;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-  
-  section {
-    flex-grow: 1;
-    min-width: 320px;
-  }
-  
-  section:last-child {
-    flex-grow: 1.2;
-    margin-right: 60px;
-  }
-  
-  .intro-left, .intro-right {
-    flex: 1 1 50%;
-    max-width: 50%;
-  }
-  
-  .intro-left.blank-left {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 400px;
-  }
-  
-  #three-canvas {
-    width: 100%;
-    height: 70%;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background-color: transparent;
-  }
-  
-  .intro-right {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .profile-pic {
-    width: 100%;
-    border-radius: 12px;
-    object-fit: cover;
-  }
-  
+section {
+  flex-grow: 1;
+  min-width: 320px;
+  margin-top: 0;
+  padding-top: 0;
+}
 
-  
+section:last-child {
+  flex-grow: 1.2;
+  margin-right: 60px;
+}
+
+/* === Intro Panels (if used elsewhere) === */
+.intro-left,
+.intro-right {
+  flex: 1 1 50%;
+  max-width: 50%;
+}
+
+.intro-left.blank-left {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 400px;
+}
+
+#three-canvas {
+  width: 100%;
+  height: 70%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.intro-right {
+  position: relative;
+  z-index: 2;
+}
+
+.profile-pic {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}

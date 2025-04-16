@@ -1,107 +1,92 @@
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 10px 20px;
-    color: white;
-  }
-  
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 15px;
-  }
-  
-  .header-left img {
-    width: 20px;
-    height: auto;
-    transition: opacity 0.3s ease;
-  }
-  
-  .header-left .small-text {
-    font-size: 14px;
-  }
-  
-  #email {
-    font-size: 15px;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  #email:hover {
-    opacity: 0.8;
-  }
-  
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    font-size: 15px;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-  }
-  
-  .nav-link:hover {
-    opacity: 0.7;
-  }
-  
-  .header-button, #theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 55px;
-    height: 40px;
-  }
-  
-  .header-button {
-    background-color: transparent;
-    text-decoration: none;
-    padding: 5px;
-    font-size: 20px;
-    color: white;
-    transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
-  }
-  
-  .header-button:hover {
-    opacity: 0.7;
-    transform: scale(1.1);
-  }
-  
-  .header-button i {
-    font-size: 22px;
-  }
-  
-  #theme-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  #theme-toggle img {
-    width: 26px;
-    height: 26px;
-    transition: opacity 0.3s ease, transform 0.2s ease;
-    border-radius: 5px;
-  }
-  
-  #theme-toggle:hover img {
-    opacity: 0.7;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px 20px;
+  color: white;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 15px;
+}
+
+.header-left img {
+  width: 20px;
+  height: auto;
+  transition: opacity 0.3s ease;
+}
+
+.header-left .small-text {
+  font-size: 14px;
+}
+
+#email {
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#email:hover {
+  opacity: 0.8;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  font-size: 15px;
+}
+
+/* Shared styling for icons and buttons */
+.header-button,
+#theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 40px;
+}
+
+.header-button {
+  background-color: transparent;
+  text-decoration: none;
+  padding: 5px;
+  font-size: 20px;
+  color: white;
+  transition: opacity 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.header-button:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.header-button i {
+  font-size: 22px;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#theme-toggle img {
+  width: 26px;
+  height: 26px;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  border-radius: 5px;
+}
+
+#theme-toggle:hover img {
+  opacity: 0.7;
+}

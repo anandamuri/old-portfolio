@@ -1,29 +1,28 @@
 :root {
-    --background-dark: #161616;
-    --text-dark: white;
-    --hover-dark: rgba(255, 255, 255, 0.3);
-    --background-light: #f5f5f5;
-    --text-light: black;
-    --hover-light: rgba(0, 0, 0, 0.3);
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-dark);
-    color: var(--text-dark);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    overflow: hidden;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  a img {
-    vertical-align: middle;
-  }
-  
+  --background-dark: #161616;
+  --text-dark: white;
+  --hover-dark: rgba(255, 255, 255, 0.3);
+  --background-light: #f5f5f5;
+  --text-light: black;
+  --hover-light: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: Georgia, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+a img {
+  vertical-align: middle;
+}
