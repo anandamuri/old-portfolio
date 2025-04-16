@@ -8,7 +8,7 @@
 }
 
 .light-mode .fancy-underline {
-  border-color: #e91e61;
+  border-color: #2081e2;
 }
 
 .fancy-underline::after {
@@ -268,70 +268,38 @@ ul li {
 
 
 #about-me {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
   padding: 2rem 1rem;
 }
 
-.about-description {
+.about-photo-block {
+  text-align: center;
   max-width: 600px;
-  margin: 0 auto 2rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-dark);
+  width: 90%;
 }
 
-.light-mode .about-description {
-  color: var(--text-light);
+.about-photo-block img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.about-grid {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.about-card {
-  background-color: #1e1e24;
-  padding: 1.5rem;
-  border-radius: 16px;
-  width: 140px;
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-.about-card img {
-  image-rendering: pixelated;
-  width: 128px;
-  height: 128px;
-  transform: scale(1.2);
-}
-
-
-.about-card p {
-  margin: 0;
-  font-weight: bold;
-  color: white;
+.about-photo-block p {
   font-size: 1rem;
+  color: #0b2559;
+  margin-top: 0.8rem;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
-.about-card:hover {
-  transform: scale(1.05);
-  background-color: #2a2a30;
+.light-mode .about-photo-block p {
+  color: #0b2559;
 }
 
-.light-mode .about-card {
-  background-color: #eaeaea;
-}
-
-.light-mode .about-card p {
-  color: black;
-}
-
-.light-mode .about-card:hover {
-  background-color: #d5d5d5;
+.dark-mode .about-photo-block p {
+  color: #cccccc;
 }

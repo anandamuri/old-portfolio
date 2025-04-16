@@ -14,8 +14,15 @@ body {
   background-color: var(--background-dark);
   color: var(--text-dark);
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Disable scroll only when explicitly applied */
+body.no-scroll {
   overflow: hidden;
 }
+
 
 .container {
   max-width: 1200px;
