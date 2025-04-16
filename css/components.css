@@ -244,14 +244,26 @@ ul li {
   padding: 0 20px; /* aligns with header/logo spacing */
 }
 
-
 .education-entry {
   flex: 1 1 48%;
-  min-width: 420px; /* increased from 300px */
+  min-width: 360px;
   background-color: #1e1e24;
   padding: 1.5rem;
   border-radius: 12px;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.education-entry:hover {
+  transform: scale(1.02);
+}
+
+.light-mode .education-entry {
+  background-color: #f0f0f0;
+}
+
+.light-mode .education-entry:hover {
+  background-color: #f0f0f0;
 }
 
 
@@ -293,10 +305,12 @@ ul li {
 }
 
 .about-card img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 0.5rem;
+  image-rendering: pixelated;
+  width: 128px;
+  height: 128px;
+  transform: scale(1.2);
 }
+
 
 .about-card p {
   margin: 0;
