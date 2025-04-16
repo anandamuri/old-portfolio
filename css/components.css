@@ -157,3 +157,46 @@
   color: black;
   font-weight: bold;
 }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
+.skills-grid img {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+  background-color: #1e1e1e;
+  padding: 0.5rem;
+}
+
+.skills-grid img:hover {
+  transform: scale(1.1);
+}
+
+#skills-section {
+  text-align: center;
+}
+
+.skills-heading {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  margin-top: 1rem;
+  color: white;
+}
+
+.skills-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.skills-icons img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  transform: scale(1); 
+}

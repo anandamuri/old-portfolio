@@ -63,57 +63,86 @@ document.addEventListener("DOMContentLoaded", () => {
   cubeMaterial = materials.dark.cube;
   dotMaterial = materials.dark.dot;
   lineMaterial = materials.dark.line;
-  const dotGeometry = new THREE.SphereGeometry(0.03, 6, 6);
 
-  const placed = new Set();
+  const levels = [[], [], []];
 
-  function makeKey(x, y, z, s) {
-    return `${x},${y},${z},${s}`;
-  }
-
-  function createCube(x, y, z, size = 1) {
-    const key = makeKey(x, y, z, size);
-    if (placed.has(key)) return;
-    placed.add(key);
-
+  function createCubeAt(position, size = 1, level = 0) {
     const geo = new THREE.BoxGeometry(size, size, size);
-    const mesh = new THREE.Mesh(geo, cubeMaterial);
+    const cube = new THREE.Mesh(geo, cubeMaterial);
+    const wire = new THREE.LineSegments(new THREE.EdgesGeometry(geo), lineMaterial);
+    cube.add(wire);
+    cube.position.copy(position);
+    cube.scale.set(0, 0, 0);
 
-    const wire = new THREE.LineSegments(
-      new THREE.EdgesGeometry(geo),
-      lineMaterial
-    );
-    mesh.add(wire);
-    mesh.position.set(x, y, z);
-    mesh.scale.set(0, 0, 0);
+    root.add(cube);
+    levels[level].push(cube);
 
-    const verts = geo.attributes.position.array;
-    for (let i = 0; i < verts.length; i += 3) {
-      const dot = new THREE.Mesh(dotGeometry, dotMaterial);
-      dot.position.set(verts[i], verts[i + 1], verts[i + 2]);
-      mesh.add(dot);
-    }
-
-    root.add(mesh);
-    new TWEEN.Tween(mesh.scale)
-      .to({ x: 1, y: 1, z: 1 }, 1200)
+    new TWEEN.Tween(cube.scale)
+      .to({ x: 1, y: 1, z: 1 }, 600)
       .easing(TWEEN.Easing.Elastic.Out)
-      .delay(Math.random() * 800)
       .start();
+
+    return cube;
   }
 
-  // === Generate a compact random cluster like 8VC ===
+  function getVertexWorldPositions(mesh) {
+    const positions = mesh.geometry.attributes.position.array;
+    const worldPositions = [];
+    for (let i = 0; i < positions.length; i += 3) {
+      if (Math.random() < 0.5) continue; // Keep about half
+      const vertex = new THREE.Vector3(positions[i], positions[i + 1], positions[i + 2]);
+      vertex.applyMatrix4(mesh.matrixWorld);
+      worldPositions.push(vertex);
+    }
+    return worldPositions;
+  }
+
+  // Initial cluster
   const cubeCount = 25;
   const radius = 2;
-
   for (let i = 0; i < cubeCount; i++) {
     const x = (Math.random() - 0.5) * radius * 2;
     const y = (Math.random() - 0.5) * radius * 2;
     const z = (Math.random() - 0.5) * radius * 2;
-    createCube(x, y, z, 1);
+    createCubeAt(new THREE.Vector3(x, y, z), 1, 0);
   }
 
-  // === Mouse Rotation ===
+  let clickCount = 0;
+  canvas.addEventListener("click", () => {
+    clickCount++;
+    const stage = clickCount % 4;
+
+    if (stage === 1 || stage === 2) {
+      const parentLevel = stage - 1;
+      const childLevel = stage;
+      const parentCubes = levels[parentLevel];
+      const newSize = Math.pow(0.5, childLevel); // 0.5, 0.25, etc.
+
+      for (const parent of parentCubes) {
+        const verts = getVertexWorldPositions(parent);
+        for (const v of verts) {
+          createCubeAt(v, newSize, childLevel);
+        }
+      }
+    }
+
+    if (stage === 3 || stage === 0) {
+      const removeLevel = stage === 3 ? 2 : 1;
+      const targets = levels[removeLevel];
+      for (const cube of targets) {
+        new TWEEN.Tween(cube.scale)
+          .to({ x: 0, y: 0, z: 0 }, 400)
+          .easing(TWEEN.Easing.Quadratic.In)
+          .onComplete(() => {
+            root.remove(cube);
+          })
+          .start();
+      }
+      levels[removeLevel] = [];
+    }
+  });
+
+  // Rotation
   const mouse = { x: 0, y: 0 };
   document.addEventListener("mousemove", (e) => {
     const { innerWidth, innerHeight } = window;
@@ -124,10 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function animate() {
     requestAnimationFrame(animate);
     TWEEN.update();
-
     root.rotation.x += (mouse.y * 0.3 - root.rotation.x) * 0.05;
     root.rotation.y += (mouse.x * 0.3 - root.rotation.y) * 0.05;
-
     renderer.render(scene, camera);
   }
 
