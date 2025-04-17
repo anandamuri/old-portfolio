@@ -313,8 +313,136 @@ ul li {
   color: #cccccc;
 }
 
-@media (max-width: 768px) {
-  .about-photo-grid {
-    column-count: 1;
-  }
+.project-section {
+  padding: 4rem 2rem;
+  color: #eaeaea;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-header {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.project-number {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 7rem;
+  font-weight: 800;
+  color: #303845;
+  z-index: 0;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.project-title {
+  position: relative;
+  z-index: 1;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f5f5f5;
+  margin-bottom: 1rem;
+}
+
+.project-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.project-section {
+  padding: 4rem 2rem;
+  color: #eaeaea;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-header {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.project-number {
+  position: absolute;
+  top: -60px; /* was -20px */
+  left: 0;
+  font-size: 7rem;
+  font-weight: 800;
+  color: #2081e258;
+  z-index: 0;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+.project-title {
+  position: relative;
+  z-index: 1;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f5f5f5;
+  margin-bottom: 1rem;
+}
+
+.project-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+/* Alternating alignment */
+.project-section.left {
+  text-align: left;
+  align-self: flex-start;
+}
+
+.project-section.right {
+  text-align: right;
+  align-self: flex-end;
+}
+
+.project-section.right .project-number {
+  left: auto;
+  right: 0;
+}
+
+.project-section.right .project-title {
+  text-align: right;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  margin-top: 1.5rem;
+}
+
+.project-section.right .project-links {
+  justify-content: flex-end;
+}
+
+.project-button {
+  background-color: transparent;
+  border: 1px solid #888;
+  color: #f0f0f0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.project-button:hover {
+  background-color: #333;
 }

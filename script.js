@@ -1,6 +1,7 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.152.2";
 
 let cubeMaterial, dotMaterial, lineMaterial;
+let root;
 
 const materials = {
   dark: {
@@ -19,19 +20,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
 
+  function updateMaterials(mode) {
+    cubeMaterial = materials[mode].cube;
+    dotMaterial = materials[mode].dot;
+    lineMaterial = materials[mode].line;
+
+    if (!root) return;
+
+    root.traverse((child) => {
+      if (child.isMesh && child.geometry.type === "BoxGeometry") {
+        child.material = cubeMaterial;
+
+        child.children.forEach((c) => {
+          if (c.type === "LineSegments") {
+            c.material = lineMaterial;
+          }
+        });
+      }
+    });
+  }
+
   function setTheme(mode) {
     document.body.classList.toggle("dark-mode", mode === "dark");
     document.body.classList.toggle("light-mode", mode === "light");
+
     themeIcon.src = mode === "light"
       ? "../assets/icons/moon-icon.png"
       : "../assets/icons/sun-icon.png";
+
     const logoImg = document.getElementById("logo-img");
     if (logoImg) {
       logoImg.src = mode === "light"
         ? "../assets/icons/my-logo-light.png"
         : "../assets/icons/my-logo-dark.png";
     }
+
     localStorage.setItem("theme", mode);
+    updateMaterials(mode);
   }
 
   themeToggle?.addEventListener("click", () => {
@@ -39,7 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setTheme(currentTheme === "dark" ? "light" : "dark");
   });
 
-  setTheme(localStorage.getItem("theme") || "dark");
+  const initialMode = localStorage.getItem("theme") || "dark";
+  setTheme(initialMode);
 
   const canvas = document.getElementById("three-canvas");
   if (!canvas) return;
@@ -57,12 +83,13 @@ document.addEventListener("DOMContentLoaded", () => {
   light.position.set(10, 10, 10);
   scene.add(light);
 
-  const root = new THREE.Group();
+  root = new THREE.Group();
   scene.add(root);
 
-  cubeMaterial = materials.dark.cube;
-  dotMaterial = materials.dark.dot;
-  lineMaterial = materials.dark.line;
+  // Set materials based on theme
+  cubeMaterial = materials[initialMode].cube;
+  dotMaterial = materials[initialMode].dot;
+  lineMaterial = materials[initialMode].line;
 
   const levels = [[], []];
 
@@ -89,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const positions = mesh.geometry.attributes.position.array;
     const worldPositions = [];
     for (let i = 0; i < positions.length; i += 3) {
-      if (Math.random() < 0.5) continue; // Keep about half
+      if (Math.random() < 0.5) continue;
       const vertex = new THREE.Vector3(positions[i], positions[i + 1], positions[i + 2]);
       vertex.applyMatrix4(mesh.matrixWorld);
       worldPositions.push(vertex);
@@ -97,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return worldPositions;
   }
 
-  // Initial cluster
+  // Initial cube cluster
   const cubeCount = 25;
   const radius = 2;
   for (let i = 0; i < cubeCount; i++) {
@@ -140,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Rotation
   const mouse = { x: 0, y: 0 };
   document.addEventListener("mousemove", (e) => {
     const { innerWidth, innerHeight } = window;
